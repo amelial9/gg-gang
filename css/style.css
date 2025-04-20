@@ -7,8 +7,9 @@
 }
 
 .hp-heading {
-    justify-self: center;
+    text-align: center;
     margin-top: 50px;
+    width: 100%;
 }
 
 .hp-content {
