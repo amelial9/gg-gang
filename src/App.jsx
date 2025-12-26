@@ -1,15 +1,24 @@
 import React from 'react'
 import gggangImage from '../img/gggang.jpg'
 import membersData from './data/members.json'
-import oliviaImage from './img/olivia.jpg'
-import kemingImage from './img/qkm.jpg'
-import ameliaImage from './img/amelia.jpg'
+import timelineData from './data/timeline.json'
 
-const memberImages = {
-  'olivia.jpg': oliviaImage,
-  'qkm.jpg': kemingImage,
-  'amelia.jpg': ameliaImage
-}
+// Dynamically import all images from the root img/members folder
+const imageModules = import.meta.glob('../img/members/*.{jpg,jpeg,png}', { eager: true })
+const memberImages = {}
+Object.keys(imageModules).forEach(path => {
+  const fileName = path.split('/').pop()
+  // Handle both default export and direct module export
+  memberImages[fileName] = imageModules[path].default ?? imageModules[path]
+})
+
+// Dynamically import all images from the root img/album folder
+const albumModules = import.meta.glob('../img/album/*.{jpg,jpeg,png}', { eager: true })
+const albumImages = []
+Object.keys(albumModules).forEach(path => {
+  const imageSrc = albumModules[path].default ?? albumModules[path]
+  albumImages.push(imageSrc)
+})
 
 function App() {
   return (
@@ -51,6 +60,43 @@ function App() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="timeline-section">
+          <h2 className="timeline-heading">Timeline</h2>
+          <div className="timeline-container">
+            {timelineData.events.map((event, index) => (
+              <div key={index} className="timeline-item">
+                <div className="timeline-marker"></div>
+                <div className="timeline-content">
+                  <div className="timeline-date">{event.date}</div>
+                  <h3 className="timeline-title">{event.title}</h3>
+                  <p className="timeline-description">{event.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="album-section">
+          <h2 className="album-heading">Album</h2>
+          <div className="album-container">
+            <div className="album-scroll">
+              {albumImages.length > 0 ? (
+                albumImages.map((imageSrc, index) => (
+                  <div key={index} className="album-item">
+                    <img 
+                      className="album-image" 
+                      src={imageSrc} 
+                      alt={`Album photo ${index + 1}`}
+                    />
+                  </div>
+                ))
+              ) : (
+                <p className="album-empty">No photos yet. Add images to img/album/</p>
+              )}
+            </div>
           </div>
         </section>
       </main>

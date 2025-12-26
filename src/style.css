@@ -406,3 +406,309 @@ footer p {
     }
 }
 
+.timeline-section {
+    margin-top: 100px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.timeline-heading {
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, #FF6B9D 0%, #C44569 50%, #FF8FA3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 60px;
+    letter-spacing: 1px;
+}
+
+.timeline-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #FF6B9D 0%, #C44569 50%, #FF8FA3 100%);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 60px;
+    display: flex;
+    align-items: center;
+    animation: fadeInUp 0.8s ease-out both;
+}
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row;
+}
+
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #FF6B9D 0%, #C44569 100%);
+    border: 4px solid rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    box-shadow: 
+        0 0 0 4px rgba(255, 107, 157, 0.2),
+        0 5px 15px rgba(255, 107, 157, 0.3);
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-marker {
+    transform: translateX(-50%) scale(1.2);
+    box-shadow: 
+        0 0 0 6px rgba(255, 107, 157, 0.3),
+        0 8px 20px rgba(255, 107, 157, 0.4);
+}
+
+.timeline-content {
+    width: calc(50% - 40px);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 
+        0 5px 20px rgba(255, 107, 157, 0.12),
+        0 2px 8px rgba(196, 69, 105, 0.06);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.timeline-content:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-5px);
+    box-shadow: 
+        0 10px 30px rgba(255, 107, 157, 0.2),
+        0 5px 15px rgba(196, 69, 105, 0.12);
+}
+
+.timeline-date {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(255, 107, 157, 0.2);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #C44569;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.timeline-title {
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+    color: #C44569;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.timeline-description {
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    line-height: 1.6;
+    color: #4a4a4a;
+    font-weight: 400;
+}
+
+@media (max-width: 767px) {
+    .timeline-container::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        flex-direction: row !important;
+        padding-left: 50px;
+    }
+    
+    .timeline-marker {
+        left: 20px;
+        transform: translateX(-50%);
+    }
+    
+    .timeline-item:hover .timeline-marker {
+        transform: translateX(-50%) scale(1.2);
+    }
+    
+    .timeline-content {
+        width: 100%;
+        margin: 0 !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .timeline-section {
+        margin-top: 120px;
+    }
+    
+    .timeline-item {
+        margin-bottom: 80px;
+    }
+}
+
+.album-section {
+    margin-top: 100px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.album-heading {
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, #FF6B9D 0%, #C44569 50%, #FF8FA3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+.album-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.album-scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 20px 10px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 107, 157, 0.5) transparent;
+}
+
+.album-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.album-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.album-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 107, 157, 0.5);
+    border-radius: 10px;
+}
+
+.album-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 107, 157, 0.7);
+}
+
+.album-item {
+    flex-shrink: 0;
+    width: 280px;
+    height: 280px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 
+        0 5px 20px rgba(255, 107, 157, 0.12),
+        0 2px 8px rgba(196, 69, 105, 0.06);
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.8s ease-out both;
+}
+
+.album-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+        0 10px 30px rgba(255, 107, 157, 0.2),
+        0 5px 15px rgba(196, 69, 105, 0.12);
+}
+
+.album-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.album-item:hover .album-image {
+    transform: scale(1.05);
+}
+
+.album-empty {
+    text-align: center;
+    color: rgba(74, 74, 74, 0.6);
+    font-size: 1rem;
+    padding: 60px 20px;
+    font-style: italic;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .album-item {
+        width: 320px;
+        height: 320px;
+    }
+    
+    .album-scroll {
+        gap: 30px;
+        padding: 30px 20px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .album-section {
+        margin-top: 120px;
+    }
+    
+    .album-item {
+        width: 350px;
+        height: 350px;
+    }
+    
+    .album-scroll {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .album-item {
+        width: 240px;
+        height: 240px;
+    }
+    
+    .album-scroll {
+        gap: 15px;
+        padding: 15px 5px;
+    }
+}
+
