@@ -1,0 +1,30 @@
+{
+  "groupName": "GG Gang",
+  "members": [
+    {
+        "name": "jp.mp3",
+        "image": "amelia.jpg",
+        "roles": [
+          "Cat mom",
+          "Lore Archivist"
+        ]
+    },
+    {
+      "name": "friedegg.jpg",
+      "image": "qkm.jpg",
+      "roles": [
+        "Dog mom",
+        "Banana Hater"
+      ]
+    },
+    {
+      "name": "moronhater.png",
+      "image": "olivia.jpg",
+      "roles": [
+        "Low-Chaos Individual",
+        "Loopy Ambassdor"
+      ]
+    }
+  ]
+}
+

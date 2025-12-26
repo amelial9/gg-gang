@@ -1,5 +1,15 @@
 import React from 'react'
 import gggangImage from '../img/gggang.jpg'
+import membersData from './data/members.json'
+import oliviaImage from './img/olivia.jpg'
+import kemingImage from './img/qkm.jpg'
+import ameliaImage from './img/amelia.jpg'
+
+const memberImages = {
+  'olivia.jpg': oliviaImage,
+  'qkm.jpg': kemingImage,
+  'amelia.jpg': ameliaImage
+}
 
 function App() {
   return (
@@ -18,6 +28,31 @@ function App() {
             <p>More to come</p>
           </div>
         </div>
+
+        <section className="members-section">
+          <h2 className="members-heading">Members</h2>
+          <div className="members-list">
+            {membersData.members.map((member, index) => (
+              <div key={member.name} className="member-card" style={{animationDelay: `${0.3 + index * 0.2}s`}}>
+                <div className="member-image-wrapper">
+                  <img 
+                    className="member-image" 
+                    src={memberImages[member.image]} 
+                    alt={member.name}
+                  />
+                </div>
+                <div className="member-info">
+                  <h3 className="member-name">{member.name}</h3>
+                  <div className="member-roles">
+                    {member.roles.map((role, roleIndex) => (
+                      <span key={roleIndex} className="member-role">{role}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
       </main>
 
       <footer>
